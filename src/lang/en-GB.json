@@ -1,0 +1,101 @@
+{
+    "$package": {
+        "author": "Loiren#1000",
+        "flag": ":flag_gb:",
+        "name": "English"
+    },
+    "reminder": {
+        "invalidArgs": "You must enter an argument.\n**Correct Usage:** ?reminder on|off",
+        "AlreadyActive": "The reminder is already active.",
+        "AlreadyOff": "The reminder is already turned off.",
+        "reminderSuccess": {
+            "open": "Reminder opened successfully.",
+            "close": "Reminder successfully turned off."
+        }
+    },
+    "stats": {
+        "general": {
+            "title": "General Datas",
+            "guilds": "Servers",
+            "members": "Users",
+            "channels": "Channels",
+            "emojis": "Emojis"
+        },
+        "pings": {
+            "title": "Ping Datas",
+            "database": "Database Ping",
+            "bot": "Bot Ping"
+        },
+        "other": {
+            "title": "Other Datas",
+            "library": "Library",
+            "web_server": "Web Server",
+            "database": "Database",
+            "uptime": "Uptime"
+        },
+        "versions": {
+            "title": "Versions"
+        }
+    },
+    "servers_info": {
+        "information": "**{guildName}** server information is displayed.",
+        "server_datas": {
+            "title": "Server Information",
+            "name": "Server Name",
+            "memberCount": "Number of Members",
+            "owner": "Server Owner",
+            "established": "Year of foundation"
+        },
+        "desion_datas": {
+            "title": "Desion Datas",
+            "heartCount": "Numbor of Hearts",
+            "no_data": "Data not found."
+        },
+        "desion_message": {
+            "title": "Desion Message",
+            "content": "If you want to see more data, visit [website](https://desion.me/server/{guildID})"
+        }
+    },
+
+    "heart": {
+        "wait": {
+            "message": "You have to wait **{time}** before you can beat a heart again.",
+            "less1min": "less than 1 minute"
+        },
+        "wrong": {
+            "title": "Wrong button selected.",
+            "description": "The operation was canceled because you selected the wrong button."
+        },
+        "correct": {
+            "title": "The correct button has been selected.",
+            "description": "You have successfully hearted {guildName}.\nThe server has reached the total number of **{hearts}** hearts."
+        },
+        "control": {
+            "title": "Choose the correct button.",
+            "description": "Vote for the server by clicking the button that is the same as the text in the picture, this process will be canceled after **60 seconds**."
+        },
+        "webhook": {
+            "message": "User {user} took heart to the server. The server has reached the total number of **{hearts}** hearts."
+        }
+    },
+
+    "help": {
+        "heart": "It allows you to heart the server.",
+        "reminder": "The server will notify you when it's time to beat your heart.",
+        "server_info": "Provides information about the server.",
+        "stats": "It allows you to see the bot's statistics.",
+        "invite": "It gives you access to the bot's invite links.",
+        "lang": "Allows you to change the language of the bot."
+    },
+
+    "language": {
+        "invalidArgs": "You must specify a language.",
+        "invalidLang": "You entered an invalid language.",
+        "currentLang": "Current Language: {currentLang}",
+        "activeLangs": "Available Languages: ",
+        "name": "Language Name",
+        "command": "Command",
+        "author": "Translator",
+        "languageChanged": "Language successfully set to {lang}."
+    }
+}

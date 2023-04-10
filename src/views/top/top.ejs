@@ -1,0 +1,116 @@
+<%- include('../static/navbar.ejs', { user }) %>
+
+<div class="container mt-3 mb-3">
+    <div class="mb-6">
+        <h3 class="font-semibold text-2xl md:text-3xl">
+            <% if(sort === "heart") { %>
+                <head>
+                  <title translate="no">Desion | Top #Heart</title>
+                </head>
+               <i class="fas fa-heart"></i>&nbsp;Kalp Sayısı
+               <p class="h6">Kalp sayısı en çok olan ilk 30 sunucu listelenir.</p>
+            <% } %>
+            <% if(sort === "voice") { %>
+                <head>
+                  <title translate="no">Desion | Top #Voice</title>
+                </head>
+               <i class="fas fa-volume"></i>&nbsp;Ses Aktifliği
+               <p class="h6">Ses aktifliği en çok olan ilk 30 sunucu listelenir.</p>
+            <% } %>
+        </h3>
+    </div>
+
+    <div class="grid gap-3 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
+    <% exdb.filter(x => client.guilds.cache.get(x.id)).sort((a,b) => 
+      sort === "voice" ?  client.guilds.cache.get(b.id).channels.cache.filter(a => a.type === "voice").reduce((a, b) => a + b.members.size, 0)
+      - client.guilds.cache.get(a.id).channels.cache.filter(a => a.type === "voice").reduce((a, b) => a + b.members.size, 0) 
+      : b.monthHearts - a.monthHearts
+    ).slice(0, 30).map(server => { %> 
+ <% let getServerFromDatabase = client.guilds.cache.get(server.id) %>
+    <% if(!server.gizli && getServerFromDatabase) { %>
+        <div style="transform: translateY(0%);">
+            <a
+                href="/server/<%= server.id %>"
+                class="rounded-md flex flex-col h-full bg-d text-current transform transition-transform hover:text-current hover:-translate-y-2 dark:bg-[#23283b] featured text-white"
+                style="overflow: hidden; position: relative;"
+            >
+                <div class="card-image">
+                    <figure class="image is-2by1">
+                        <img
+                            alt="featured image"
+                            src="<%= getServerFromDatabase.banner ? 'https://cdn.discordapp.com/banners/'+getServerFromDatabase.id+'/'+getServerFromDatabase.banner+'?size=1024' : 'https://media.discordapp.net/attachments/745937151094423642/833982696379121694/0_ub5SHVwizoWwsoZV.png' %>"
+                            class="is-2by1"
+                            style="max-height: 200px !important; width: 100% !important;"
+                        />
+                    </figure>
+                </div>
+                <div class="flex flex-col h-full space-y-2 p-6">
+                    <div class="flex space-x-4 mb-2 items-center">
+                        <div class="flex-shrink-0 relative" style="margin-top: -85px;">
+                            <figure class="rounded-md image is-64x64">
+                                <img
+                                    style="border: 5px solid #18191c; border-radius: 30px;"
+                                    draggable="false"
+                                    width="82"
+                                    height="82"
+                                    alt="icon"
+                                    onError="imgError(this)"
+                                    src="https://cdn.discordapp.com/icons/<%=getServerFromDatabase.id%>/<%=getServerFromDatabase.icon%>?size=2048"
+                                    class="rounded-md image is-48x48 lazyLoad isLoaded"
+                                />
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="flex-grow m-0 pt-1 pb-1 line-clamp-3">
+                        <div class="leading-snug truncate justify-start" style="margin-top: -25px;">
+                            <h5 class="font-semibold text-lg truncate" tabindex="0">
+                                <div class="flex items-center">
+                                    <span translate="no"><%= getServerFromDatabase.name %></span>
+                                    <% if(server.verified === "Verified") { %> &nbsp;<!-- Onaylı Sunucuu -->
+                                    <svg class="tippy" width="17px" data-tippy-content="Doğrulandı" viewBox="0 0 319.75 319.1" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <style>
+                                                .cls-31 {
+                                                    fill: #1bfa8b;
+                                                }
+                                            </style>
+                                        </defs>
+                                        <g data-name="katman 2">
+                                            <g data-name="katman 1">
+                                                <path
+                                                    class="cls-31"
+                                                    d="M142.64,318.36l-12.71-1.77a201.52,201.52,0,0,1-38.82-12.71l-10-5.14A210.33,210.33,0,0,1,51.28,277L43,268.73a206,206,0,0,1-22.35-30.27q-2.3-4.29-4.57-8.59A189.12,189.12,0,0,1,3,190.78L.85,178.26C.37,171-.06,163.67,0,156.35c.1-11.58,1.9-22.94,4.25-34.24q3.24-10.45,6.49-20.9c5.58-12.62,11.83-24.86,20.1-36A160,160,0,0,1,98.81,12c.9-.37,1.74-.89,2.61-1.35l20.87-6.34C140.86-.15,159.66-.83,178.61.82L191.15,2.9c13.61,2.7,26.53,7.46,39.18,13l8.59,4.62a201.82,201.82,0,0,1,30.34,22.29l8.27,8.32A207.71,207.71,0,0,1,299.32,81l5.19,9.87c4.79,11.33,9.21,22.78,11.68,34.88.27,1.33.67,2.62,1,3.93L319,142.35a176.29,176.29,0,0,1-4,56.87q-3.66,10.86-7.33,21.71c-6.73,15-15,29.13-25.7,41.71a160,160,0,0,1-58.17,43.23c-1.12.49-2.21,1.08-3.31,1.62l-20.9,7c-7.33,1.22-14.57,3-22,3.77A189.23,189.23,0,0,1,142.64,318.36ZM99.23,160.06c-11.25-2.53-21.56,7.43-18.86,18.22a10.6,10.6,0,0,0,3.41,7.63c7.26,7.36,14.66,14.58,22,21.85a43.48,43.48,0,0,0,6.55,6.53c8.88,11.77,20.21,11.68,30.22,1.44,29.9-30.56,60.4-60.54,90.66-90.75a42.9,42.9,0,0,0,3.08-3.25,15.64,15.64,0,0,0-5.75-24.38c-6.64-3.2-13.12-1.93-18.93,3.88Q177.77,135,144,168.87c-5.37,5.36-10.83,10.64-16.24,15.95q-10.08-10.15-20.16-20.3C105.24,162.2,102.63,160.37,99.23,160.06Z"
+                                                />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <% } %>
+                                </div>
+                            </h5>
+                        </div>
+                        <% if(getServerFromDatabase.description) { %> 
+                        <span translate="no"><%= getServerFromDatabase.description %></span>
+                         <% } else { %> Bir açıklama bulunamadı.&nbsp;
+                        <span class="tippy" data-tippy-content="Eğer bu sunucu sana aitse ve bir açıklama girmek istiyorsan, Topluluk kısmından Genel Görünüm'e tıklayıp bir açıklama girebilirsin.">
+                            <i class="fas fa-question-circle"></i>
+                        </span>
+                        <% } %>
+                        <div class="flex mt-2 items-center justify-between">
+                            <div data-tippy-content="Ses kanallarında <%= getServerFromDatabase.channels.cache.filter(a => a.type === "voice").reduce((a,b) => a + b.members.size, 0) %> kişi bulunuyor." class="flex space-x-1 items-center
+                            tippy" tabindex="0"><span class="icon"><i class="fas fa-volume"></i></span> <span translate="no"><%= getServerFromDatabase.channels.cache.filter(a => a.type === "voice").reduce((a,b) => a + b.members.size, 0) %> </span>
+                        </div>
+                        <div data-tippy-content="Bu sunucu bu ay içinde <%= server ? (server.monthHearts ? server.monthHearts : 0) : 0  %> defa kalplenmiş." data-tooltip-location="top" class="flex space-x-1 items-center tippy" tabindex="0">
+                            <span translate="no"><%= server ? (server.monthHearts ? server.monthHearts : 0) : 0 %></span> <span class="icon"><i class="fas fa-heart"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+         <% } %>
+            <% }) %>
+    </div>
+</div>
+
+
+</div>
+<%- include('../static/footer.ejs') %>

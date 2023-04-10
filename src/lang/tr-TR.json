@@ -1,0 +1,101 @@
+{
+    "$package": {
+        "author": "Claudette#9515",
+        "flag": ":flag_tr:",
+        "name": "Türkçe"
+    },
+    "reminder": {
+        "invalidArgs": "Bir argüman girmelisin.\n**Doğru Kullanım:** ?reminder on|off",
+        "AlreadyActive": "Hatırlatıcı zaten aktif durumda.",
+        "AlreadyOff": "Hatırlatıcı zaten kapalı durumda.",
+        "reminderSuccess": {
+            "open": "Hatırlatıcı başarıyla açıldı.",
+            "close": "Hatırlatıcı başarıyla kapatıldı."
+        }
+    },
+    "stats": {
+        "general": {
+            "title": "Genel Veriler",
+            "guilds": "Sunucu Sayısı",
+            "members": "Kullanıcı Sayısı",
+            "channels": "Kanal Sayısı",
+            "emojis": "Emoji Sayısı"
+        },
+        "pings": {
+            "title": "Gecikme Verileri",
+            "database": "Veritabanı Gecikmesi",
+            "bot": "Bot Gecikmesi"
+        },
+        "other": {
+            "title": "Diğer Veriler",
+            "library": "Kütüphane",
+            "web_server": "Web Sunucusu",
+            "database": "Veritabanı",
+            "uptime": "Çalışma Süresi"
+        },
+        "versions": {
+            "title": "Versiyonlar"
+        }
+    },
+    "servers_info": {
+        "information": "**{guildName}** sunucusunun bilgileri görüntüleniyor.",
+        "server_datas": {
+            "title": "Sunucu Bilgileri",
+            "name": "Sunucu Adı",
+            "memberCount": "Üye Sayısı",
+            "owner": "Sunucu Sahibi",
+            "established": "Kuruluş Tarihi"
+        },
+        "desion_datas": {
+            "title": "Desion Verileri",
+            "heartCount": "Kalp Sayısı",
+            "no_data": "Veri bulunamadı."
+        },
+        "desion_message": {
+            "title": "Desion Mesajı",
+            "content": "Daha fazla veri görmek istiyorsan [website](https://desion.me/server/{guildID}) adresini ziyaret et."
+        }
+    },
+
+    "heart": {
+        "wait": {
+            "message": "Tekrar kalp atabilmek için **{time}** süre beklemelisin.",
+            "less1min": "1 dakikadan az"
+        },
+        "wrong": {
+            "title": "Yanlış buton seçildi.",
+            "description": "İşlem iptal edildi çünkü yanlış butonu seçtin."
+        },
+        "correct": {
+            "title": "Doğru buton seçildi.",
+            "description": "Başarıyla {guildName} sunucusuna kalp attın.\nSunucu toplam **{hearts}** kalp sayısına ulaştı."
+        },
+        "control": {
+            "title": "Doğru olan butonu seç.",
+            "description": "Resimdeki yazı ile aynı olan butona tıklayarak sunucuya oy ver, bu işlem **60 saniye** sonra iptal olacaktır."
+        },
+        "webhook": {
+            "message": "{user} adlı kullanıcı sunucuya kalp attı. Sunucu toplam **{hearts}** kalp sayısına ulaştı."
+        }
+    },
+
+    "help": {
+        "heart": "Sunucuya kalp atmanızı sağlar.",
+        "reminder": "Sunucuya kalp atma süreinz gelince sizi haberdar eder.",
+        "server_info": "Sunucu hakkında bilgi verir.",
+        "stats": "Botun istatistiklerini görmenizi sağlar.",
+        "invite": "Botun davet bağlantılarına erişmenizi sağlar.",
+        "lang": "Botun dilini değiştirmenizi sağlar."
+    },
+
+    "language": {
+        "invalidArgs": "Bir dil belirtmelisin.",
+        "invalidLang": "Geçersiz bir dil girdin.",
+        "currentLang": "Şuanki Dil: {currentLang}",
+        "activeLangs": "Mevcut Diller: ",
+        "name": "Dil Adı",
+        "command": "Komut",
+        "author": "Çevirmen",
+        "languageChanged": "Dil başarıyla {lang} olarak ayarlandı."
+    }
+}

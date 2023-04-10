@@ -1,0 +1,162 @@
+<%- include('../static/navbar.ejs', { user }) %>
+<head>
+  <title translate="no">Desion | Team</title>
+</head>
+<div class="container mt-5 mb-5">
+  <h1>
+    Ekibimiz
+    <p class="text-muted h6">
+     Burada ekibimizde bulunan ve bize destek veren kullanıcılar bulunuyor. Katılmak istediğin zaman discord sunucumuz üzerinden bizimle iletişim kurabilirsin.
+    </p>
+  </h1>
+<div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  
+  <% client.guilds.cache.get('849011617962393638').members.cache.filter(a => a.roles.cache.has('867212057569132564')).map(user => { %>
+
+  <div class="flex items-center mt-2">
+    <a style="border-color: #ED8CBE" href="/p/<%=user.user.id%>" class="bg-d rounded-lg w-full transform duration-200 transition-all hover:-translate-y-2 cursor-pointer border-l-2">
+      <div class="text-white bold font-bold p-3">
+        <div class="flex items-center">
+        <img class="rounded-lg" onError="imgError(this);" src="https://cdn.discordapp.com/avatars/<%= user.user.id %>/<%= user.user.avatar %>" width="72">    
+
+        <h5 class="ml-5">
+          <%= user.user.username %><small class="text-muted">#<%=user.user.discriminator%></small>
+          <p class="h6 text-muted">
+            Yönetici
+          </p>
+          <div class="flex">
+
+          </div>
+          
+        </h5>
+      </div>
+        </div>
+    </a>
+  </div>
+<% }) %>
+  <% client.guilds.cache.get('849011617962393638').members.cache.filter(a => !a.roles.cache.has('867212057569132564') && a.roles.cache.has('867530878100308048')).map(user => { %>
+
+  <div class="flex items-center mt-2">
+    <a style="border-color: #ffba00" href="/p/<%=user.user.id%>" class="bg-d rounded-lg w-full transform duration-200 transition-all hover:-translate-y-2 cursor-pointer border-l-2">
+      <div class="text-white bold font-bold p-3">
+        <div class="flex items-center">
+        <img class="rounded-lg" onError="imgError(this);" src="https://cdn.discordapp.com/avatars/<%= user.user.id %>/<%= user.user.avatar %>" width="72">    
+
+        <h5 class="ml-5">
+          <%= user.user.username %><small class="text-muted">#<%=user.user.discriminator%></small>
+          <p class="h6 text-muted">
+            Tasarımcı
+          </p>
+          <div class="flex">
+
+          </div>
+          
+        </h5>
+      </div>
+        </div>
+    </a>
+  </div>
+<% }) %>
+  <% client.guilds.cache.get('849011617962393638').members.cache.filter(a => !a.roles.cache.has('867212059942453298') && !a.roles.cache.has('867530878100308048') && !a.roles.cache.has('867212057569132564') && a.roles.cache.has('867530131240779786')).map(user => { %>
+
+  <div class="flex items-center mt-2">
+    <a style="border-color: #74DFED" href="/p/<%=user.user.id%>" class="bg-d rounded-lg w-full transform duration-200 transition-all hover:-translate-y-2 cursor-pointer border-l-2">
+      <div class="text-white bold font-bold p-3">
+        <div class="flex items-center">
+        <img class="rounded-lg" onError="imgError(this);" src="https://cdn.discordapp.com/avatars/<%= user.user.id %>/<%= user.user.avatar %>" width="72">    
+
+        <h5 class="ml-5">
+          <%= user.user.username %><small class="text-muted">#<%=user.user.discriminator%></small>
+          <p class="h6 text-muted">
+            Moderatör
+          </p>
+          <div class="flex">
+
+          </div>
+          
+        </h5>
+      </div>
+        </div>
+    </a>
+  </div>
+<% }) %>
+
+
+  <% client.guilds.cache.get('849011617962393638').members.cache.filter(a => !a.roles.cache.has('867530878100308048') && !a.roles.cache.has('867530131240779786') && !a.roles.cache.has('867212057569132564') && a.roles.cache.has('867212059942453298')).map(user => { %>
+
+  <div class="flex items-center mt-2">
+    <a style="border-color: #958ced" href="/p/<%=user.user.id%>" class="bg-d rounded-lg w-full transform duration-200 transition-all hover:-translate-y-2 cursor-pointer border-l-2">
+      <div class="text-white bold font-bold p-3">
+        <div class="flex items-center">
+        <img class="rounded-lg" onError="imgError(this);" src="https://cdn.discordapp.com/avatars/<%= user.user.id %>/<%= user.user.avatar %>" width="72">    
+
+        <h5 class="ml-5">
+          <%= user.user.username %><small class="text-muted">#<%=user.user.discriminator%></small>
+          <p class="h6 text-muted">
+            Ortak
+          </p>
+          <div class="flex">
+
+          </div>
+          
+        </h5>
+      </div>
+        </div>
+    </a>
+  </div>
+<% }) %>
+<% client.guilds.cache.get('849011617962393638').members.cache.filter(a => !a.roles.cache.has('867212059942453298') && !a.roles.cache.has('867530878100308048') && !a.roles.cache.has('867530131240779786') && !a.roles.cache.has('867212057569132564') && a.roles.cache.has('870107179267543111')).map(user => { %>
+
+  <div class="flex items-center mt-2">
+    <a style="border-color: #94ff00" href="/p/<%=user.user.id%>" class="bg-d rounded-lg w-full transform duration-200 transition-all hover:-translate-y-2 cursor-pointer border-l-2">
+      <div class="text-white bold font-bold p-3">
+        <div class="flex items-center">
+        <img class="rounded-lg" onError="imgError(this);" src="https://cdn.discordapp.com/avatars/<%= user.user.id %>/<%= user.user.avatar %>" width="72">    
+
+        <h5 class="ml-5">
+          <%= user.user.username %><small class="text-muted">#<%=user.user.discriminator%></small>
+          <p class="h6 text-muted">
+            Hata Avcısı
+          </p>
+          <div class="flex">
+
+          </div>
+          
+        </h5>
+      </div>
+        </div>
+    </a>
+  </div>
+<% }) %>
+  <% client.guilds.cache.get('849011617962393638').members.cache.filter(a => !a.roles.cache.has('870107179267543111') && !a.roles.cache.has('867212059942453298') && !a.roles.cache.has('867530878100308048') && !a.roles.cache.has('867530131240779786') && !a.roles.cache.has('867212057569132564') && a.roles.cache.has('867895102286725150')).map(user => { %>
+
+  <div class="flex items-center mt-2">
+    <a style="border-color: #3fe4ad" href="/p/<%=user.user.id%>" class="bg-d rounded-lg w-full transform duration-200 transition-all hover:-translate-y-2 cursor-pointer border-l-2">
+      <div class="text-white bold font-bold p-3">
+        <div class="flex items-center">
+        <img class="rounded-lg" onError="imgError(this);" src="https://cdn.discordapp.com/avatars/<%= user.user.id %>/<%= user.user.avatar %>" width="72">    
+
+        <h5 class="ml-5">
+          <%= user.user.username %><small class="text-muted">#<%=user.user.discriminator%></small>
+          <p class="h6 text-muted">
+            Erken Destekçi
+          </p>
+          <div class="flex">
+
+          </div>
+          
+        </h5>
+      </div>
+        </div>
+    </a>
+  </div>
+<% }) %>
+  
+  
+  
+  
+    </div>
+  
+</div>
+
+<%- include('../static/footer.ejs', { user }) %>

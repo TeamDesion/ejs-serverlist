@@ -1,0 +1,115 @@
+<div class="px-4 py-5 text-center z bg-d">
+    <div class="p-4">
+      <img class="d-block mx-auto mb-2" src="https://i.imgur.com/eMXIoDB.png" alt="" height="57">
+      <div class="col-lg-6 mx-auto">
+        <p class="lead">
+          Sunucunuzu ekleyin, rekabete katılın ve sunucunuzu büyütün!
+        </p>
+        <div class="d-grid gap-1 d-sm-flex justify-content-sm-center -mt-5">
+          <form action='/search' class="w-full">
+            <div class="d-flex justify-content-center px-5 w-full" id="search">
+                <div class="search"> 
+                  <input name="q" type="text" class="search-input" id="searchKeys" placeholder="Sunucu ara..." name=""> 
+                  <a type="submit" class="search-icon"> 
+                    <i class="fa fa-search"></i> 
+                  </a> 
+              </div>
+            </div>
+            
+            <div class="searchArea" style="display: none">
+              <div class="d-flex justify-content-center pt-2 px-5 w-full" id="search">
+                  <div class="pt-2"></div>
+                <div class="mainInput resultSection w-full">
+                <b id="searchResultTitle" class="justify-start flex items-center"><i class="fa fa-search"></i>&nbsp;"<span id="searchLabel"></span>" için arama sonuçları</b>
+                <span class="has-text-white has-text-centered" id="loadingIcon">
+                <i class="fal fa-spinner fa-pulse is-size-3"></i>
+                </span>
+                    <span id="searchResults"><i class="fal fa-bug"></i>&nbsp;Aramak için bir harf veya bir kelime yazmalısınz.</span>
+                    <button style="display:none;" class="btn btn-primary showMore"><i class="fal fa-list"></i> Daha fazla göster</button>
+                </div>
+              </div>
+            </div>
+             <input type="hidden" name="page" value="1">
+          </form>
+        </div>
+
+        
+        <div class="mt-2 flex justify-center is-size-4 items-center">
+        <a class="text-white">Sunucu yetkilisi misin?&nbsp;</a><a href="/invite" class="btn btn-primary uppercase">
+          Sunucunu ekle
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+        $(function() {
+            $(".searchArea").hide();
+            $("#searchResultTitle").hide();
+            $("#loadingIcon").hide();
+        })
+        $("#search, .searchArea").hover(function () {  
+          $(".searchArea").show();
+        }, function () {
+          $(".searchArea").hide();
+        });
+        $("#search").keyup(function () {
+          $("#loadingIcon").show();
+          $(".searchArea").show();
+          $(".showMore").hide();
+          $("#searchResults").hide();
+          $("#searchLabel").hide();
+          $("#searchResultTitle").hide();
+          $.ajax({
+            type: "POST",
+            url: "/api/search",
+            data: {key: $("#searchKeys").val()},
+            dataType: "json",
+            success: async function (response) {
+            $("#loadingIcon").hide();
+            $("#searchResults").hide();
+              let message = "";
+              let data = response.data;
+              if (data.length == 0) {
+                $("#searchLabel").hide();
+                $("#searchResults").show();
+                $('searchResultTitle').hide();
+                $("#searchResults").html("<i class='fal fa-bug'></i>&nbsp;Bir sonuç bulunamadı.");
+                $('.showMore').hide();
+                return;
+              }
+              $("#searchResults").html('');
+              $("#searchResults").show();
+              $("#searchLabel").show();
+              $('#searchLabel').html($("#searchKeys").val());
+              $("#searchResultTitle").show();
+              
+              for (let i = 0; i < data.length; i++) {
+                if (i === 5) break; 
+                let server = data[i];
+                let soundSize = await getCount(server.id);
+                message += `
+                <a href="/server/${server.id}">
+                <div translate="no" class="mt-2 flex items-center text-white resultForHover">
+                  <img title="Desion:me" class="mr-2" width="48" onError="imgError(this)" style="border-radius: 8px;" src="${server.iconURL}" />&nbsp;&nbsp;&nbsp;${server.name}
+                  <div class="float-right">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${soundSize}&nbsp;<i class="fal fa-volume"></i>
+                  </div>
+                </div>
+            </a>
+            `;
+              }
+              if (data.length > 5) {
+                $(".showMore").show();  
+                setInterval(() => {
+                  $(".showMoreLink").attr("value", `/search?q=${$("#search").val()}&page=1`);
+                }, 100);
+                $(".showMore").click(function () { window.location.href = $(".showMoreLink").val(); });    
+              }
+              $("#searchResults").html(message);
+            }
+          });
+        });
+</script>
+
+<div class="__desion_wave-top __desion_wave"></div>
